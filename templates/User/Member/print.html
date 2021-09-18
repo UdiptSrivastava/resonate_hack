@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style type="text/css">
+        .border{
+            border-style: solid;
+            border-width: thin;
+            border-color: gray;
+        }
+    </style>
+  </head>
+  <body>
+    <center>Welcome to eLearning – Learning Development And Skill Test</center>
+    <center>Student's Name : <b>{{li[2]}}</b></center>
+    <center>Course Code {{li[14]}}</center>
+    <table width="50%" align="center" class="border">
+        <tr>
+            <td align="right" width="35%">Exam Date</td>
+            <td width="5%"></td>
+            <td>{{li[15]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Total Question</td>
+            <td width="5%"></td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Correct Answer</td>
+            <td width="5%"></td>
+            <td>{{li[7]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Wrong Answer</td>
+            <td width="5%"></td>
+            <td>{{li[8]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Unanswered</td>
+            <td width="5%"></td>
+            <td>{{li[9]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Total Marks</td>
+            <td width="5%"></td>
+            <td>{{li[10]}}</td>
+        </tr><tr>
+            <td align="right" width="35%">Percentage</td>
+            <td width="5%"></td>
+            <td>{{li[11]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Grade</td>
+            <td width="5%"></td>
+            <td>{{li[12]}}</td>
+        </tr>
+        <tr>
+            <td align="right" width="35%">Result</td>
+            <td width="5%"></td>
+            <td>{{li[13]}}</td>
+        </tr>
+    </table>    
+    
+<!-- <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title" style="background-color: #2F4050">
+                               
+
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        
+                <span style="color: white;font-size: 18px">{{li[2]}}&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;{{li[0]}}&nbsp;&nbsp;)</span>
+                       &nbsp;&nbsp;&nbsp;&nbsp; Welcome to eLearning – Learning Development And Skill Test
+                    </a>
+                </div>
+            </div>    
+            <div class="ibox-content">
+                            
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Course Code</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[14]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Exam Date</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[15]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Total Question</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="10" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Result</label>
+                                <input type="text"  class="form-control"  value="{{li[13]}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Correct Answer</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[7]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Wrong Answer</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[8]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Unanswered</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[9]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Total Marks</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[10]}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Percentage</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[11]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Grade</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[12]}}" readonly>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div> -->            
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

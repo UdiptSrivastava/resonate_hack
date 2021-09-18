@@ -1,0 +1,199 @@
+{% extends 'user/admin/Layout.html' %}
+{% block body %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2></h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Application.php">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>{% if li[16]=='1' %}
+                    Feedback
+                    {%endif%}
+                    {% if li[16]=='2' %}
+                    Enquiry
+                    {%endif%}
+                    {% if li[16]=='3' %}
+                    Career
+                    {%endif%}</a>
+            </li>
+            
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h3 class="error">
+                    {% if li[16]=='1' %}
+                    Feedback Records
+                    {%endif%}
+                    {% if li[16]=='2' %}
+                    Enquiry Records
+                    {%endif%}
+                    {% if li[16]=='3' %}
+                    Career Records
+                    {%endif%}
+                </h3>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            {% if li[16]=='5' or li[16]=='6' or li[16]=='7' %}
+
+                <form action="/admin_show/{{li[7]}},{{li[16]}}" method="post" name="form" class="card" style="width:60%;margin:0 auto;padding:20px 30px;" >
+                    <h3>{{li[17]}} Reply</h3>
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" name="name" value="{{li[8]}}" class="form-control"readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Send to Email-Id</label>
+                        <input type="text" name="email" id="email" value="{{li[11]}}" class="form-control" readonly>
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Message</label>
+                        <textarea name="message" rows="4" style="resize:none" id="message" class="form-control"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-w-m btn-info">Reply</button>
+                                                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                
+            {% elif li[7]!='0'%}
+            <div class="ibox-content">
+                <form name="form" method="post" onsubmit="return validate();" action="/admin_show/{{li[7]}},{{li[16]}}">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{li[8]}}" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Email-Id</label>
+                                    <input type="text" class="form-control" id="email" name="email" value="{{li[11]}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Contact Number</label>
+                                    <input type="text" class="form-control" id="cno" name="cno" value="{{li[10]}}" readonly >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Date</label>
+                                    <input type="text" class="form-control" id="dof" name="dof" value="{{li[13]}}"readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if li[16]=='2' or li[16]=='3' %}
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Gender</label>
+                                    <input type="text" class="form-control" value="{{li[12]}}" readonly >
+                                </div>
+                                {% if li[16]=='2' %}
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">City</label>
+                                    <input type="text" class="form-control" value="{{li[14]}}" readonly>
+                                </div>
+                                {%endif%}
+                                {% if li[16]=='3' %}
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Applicant (Curriculum Vitae) </label><br/>
+                                    <a href="cv/{{li[15]}}" target="_blank" download>Download </a>
+                                </div>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">{{li[17]}}</label>
+                                    <textarea class="form-control" name="msg" id="msg" rows="4" readonly>{{li[9]}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                        
+                    
+                    
+                    <button type="submit" id="Reply" name="Reply" class="btn btn-w-m btn-success">Reply</button>
+                    <button type="submit" id="Delete" name="Delete" class="btn btn-w-m btn-danger">Delete</button>
+                    <a href="/admin_show/{{0}},{{li[16]}}"><button type="button" class="btn btn-w-m btn-info">Cancel</button></a>
+                
+                </form>
+            </div>
+            {% else %}
+            
+            <div class="ibox-content">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Email-Id</th>
+                        <th>Contact</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for rec in data %}
+                            <tr class="gradeX" {% if rec.status == 'Y' %}
+                            style="background-color: lightgray" {%endif%}>
+                                <td>{{rec.sno}}</td>
+                                <td>{{rec.name}}</td>
+                                <td>{{rec.email_id}}</td>
+                                <td>{{rec.contact_no}}</td>
+                                <td class="center">
+                                        
+                                        <a href="/admin_show/{{rec.sno}},{{li[16]}}" style="text-decoration: none;"> <button class="btn btn-primary">Show</button></a>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                    
+                    </tbody>
+                    <tfoot>
+                    
+                    </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        {%endif%}
+    </div>
+    </div>
+</div>
+    
+
+{% endblock %}

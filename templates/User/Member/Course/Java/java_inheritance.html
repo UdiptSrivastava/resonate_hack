@@ -1,0 +1,150 @@
+
+<?php include("header.php");?>
+<?php include("sub_head.php");?>
+<!-- PRINTING STARTS HERE -->
+<div class="content">
+<h1>Java - Inheritance</h1>
+
+<hr />
+<div class="pre-btn">
+<a href="java_exceptions.php">Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="java_overriding.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>Inheritance can be defined as the process where one object acquires the properties of another. With the use of inheritance the information is made manageable in a hierarchical order.</p>
+<p>When we talk about inheritance, the most commonly used keyword would be <b>extends</b> and <b>implements</b>. These words would determine whether one object IS-A type of another. By using these keywords we can make one object acquire the properties of another object.</p>
+<h2>IS-A Relationship:</h2>
+<p>IS-A is a way of saying : This object is a type of that object. Let us see how the <b>extends</b> keyword is used to achieve inheritance.</p>
+<pre class="prettyprint">
+public class Animal{
+}
+
+public class Mammal extends Animal{
+}
+
+public class Reptile extends Animal{
+}
+
+public class Dog extends Mammal{
+}
+</pre>
+<p>Now, based on the above example, In Object Oriented terms, the following are true:</p>
+<ul class="list">
+<li><p>Animal is the superclass of Mammal class.</p></li>
+<li><p>Animal is the superclass of Reptile class.</p></li>
+<li><p>Mammal and Reptile are subclasses of Animal class.</p></li>
+<li><p>Dog is the subclass of both Mammal and Animal classes.</p></li>
+</ul>
+<p>Now, if we consider the IS-A relationship, we can say:</p>
+<ul class="list">
+<li><p>Mammal IS-A Animal</p></li>
+<li><p>Reptile IS-A Animal</p></li>
+<li><p>Dog IS-A Mammal</p></li>
+<li><p>Hence : Dog IS-A Animal as well</p></li>
+</ul>
+<p>With use of the extends keyword the subclasses will be able to inherit all the properties of the superclass except for the private properties of the superclass.</p>
+<p>We can assure that Mammal is actually an Animal with the use of the instance operator.</p>
+<h2>Example:</h2>
+<pre class="prettyprint">
+public class Dog extends Mammal{
+
+   public static void main(String args[]){
+
+      Animal a = new Animal();
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+}
+</pre>
+<p>This would produce the following result:</p>
+<pre class="prettyprint">
+true
+true
+true
+</pre>
+<p>Since we have a good understanding of the <b>extends</b> keyword let us look into how the <b>implements </b> keyword is used to get the IS-A relationship.</p>
+<p>The <b>implements</b> keyword is used by classes by inherit from interfaces. Interfaces can never be extended by the classes.</p>
+<h2>Example:</h2>
+<pre class="prettyprint">
+public interface Animal {}
+
+public class Mammal implements Animal{
+}
+
+public class Dog extends Mammal{
+}
+</pre>
+<h2>The instanceof Keyword:</h2>
+<p>Let us use the <b>instanceof</b> operator to check determine whether Mammal is actually an Animal, and dog is actually an Animal</p>
+<pre class="prettyprint">
+interface Animal{}
+
+class Mammal implements Animal{}
+
+public class Dog extends Mammal{
+   public static void main(String args[]){
+
+      Mammal m = new Mammal();
+      Dog d = new Dog();
+
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+} 
+</pre>
+<p>This would produce the following result:</p>
+<pre class="prettyprint">
+true
+true
+true
+</pre>
+<h2>HAS-A relationship:</h2>
+<p>These relationships are mainly based on the usage. This determines whether a certain class <b>HAS-A </b> certain thing. This relationship helps to reduce duplication of code as well as bugs.</p>
+<p>Lets us look into an example:</p>
+<pre class="prettyprint">
+public class Vehicle{}
+public class Speed{}
+public class Van extends Vehicle{
+	private Speed sp;
+} 
+</pre>
+<p>This shows that class Van HAS-A Speed. By having a separate class for Speed, we do not have to put the entire code that belongs to speed inside the Van class., which makes it possible to reuse the Speed class in multiple applications.</p>
+<p>In Object-Oriented feature, the users do not need to bother about which object is doing the real work. To achieve this, the Van class hides the implementation details from the users of the Van class. So basically what happens is the users would ask the Van class to do a certain action and the Van class will either do the work by itself or ask another class to perform the action.</p>
+<p>A very important fact to remember is that Java only supports only single inheritance. This means that a class cannot extend more than one class. Therefore following is illegal:</p>
+<pre class="prettyprint">
+public class extends Animal, Mammal{} 
+</pre>
+<p>However, a class can implement one or more interfaces. This has made Java get rid of the impossibility of multiple inheritance.</p>
+<br />
+<hr />
+<div class="pre-btn">
+<a href="java_exceptions.php">Previous Page</a>
+</div>
+
+<div class="nxt-btn">
+<a href="java_overriding.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+</div>
+
+</div>
+</div> </td>
+        </tr>
+    </table>
+
+    </div>
+        </div>
+    </div>
+    </div>
+</div>
+    
+<?php include("../footer.php");?>

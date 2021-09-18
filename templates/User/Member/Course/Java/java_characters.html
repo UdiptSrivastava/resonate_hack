@@ -1,0 +1,116 @@
+
+<?php include("header.php");?>
+<?php include("sub_head.php");?>
+<!-- PRINTING STARTS HERE -->
+<div class="content">
+<h1>Java - Character Class</h1>
+
+<hr />
+<div class="pre-btn">
+<a href="java_numbers.php">Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="java_strings.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>Normally, when we work with characters, we use primitive data  types char.</p>
+<h2>Example:</h2>
+<pre class="prettyprint">
+char ch = 'a';
+
+// Unicode for uppercase Greek omega character
+char uniChar = '\u039A'; 
+
+// an array of chars
+char[] charArray ={ 'a', 'b', 'c', 'd', 'e' }; 
+</pre>
+<p>However in development, we come across situations where we need to use objects instead of primitive data types. In order to achieve this, Java provides wrapper class <b>Character</b> for  primitive data type char.</p>
+<p>The Character class offers a number of useful class (i.e., static) methods for manipulating characters. You can create a Character object with the Character constructor:</p>
+<pre class="prettyprint">
+Character ch = new Character('a');
+</pre>
+<p>The Java compiler will also create a Character object for you under some circumstances. For example, if you pass a primitive char into a method that expects an object, the compiler automatically converts the char to a Character for you. This feature is called autoboxing or unboxing, if the conversion goes the other way.</p>
+<h2>Example:</h2>
+<pre class="prettyprint">
+// Here following primitive char 'a'
+// is boxed into the Character object ch
+Character ch = 'a';
+
+// Here primitive 'x' is boxed for method test,
+// return is unboxed to char 'c'
+char c = test('x');
+</pre>
+<h2>Escape Sequences:</h2>
+<p>A character preceded by a backslash (\) is an escape sequence and has special meaning to the compiler.</p>
+<p>The newline character (\n) has been used frequently in this tutorial in System.out.println() statements to advance to the next line after the string is printed.</p>
+<p>Following table shows the Java escape sequences:</p>
+<table class="src">
+<tr>
+<th>Escape Sequence</th><th>Description</th></tr>
+<tr><td>\t</td><td>Inserts a tab in the text at this point. </td></tr>
+<tr><td>\b</td><td>Inserts a backspace in the text at this point. </td></tr>
+<tr><td>\n</td><td>Inserts a newline in the text at this point. </td></tr>
+<tr><td>\r</td><td>Inserts a carriage return in the text at this point. </td></tr>
+<tr><td>\f</td><td>Inserts a form feed in the text at this point. </td></tr>
+<tr><td>\'</td><td>Inserts a single quote character in the text at this point. </td></tr>
+<tr><td>\"</td><td>Inserts a double quote character in the text at this point. </td></tr>
+<tr><td>\\</td><td>Inserts a backslash character in the text at this point.</td></tr>
+</table>
+<p>When an escape sequence is encountered in a print statement, the compiler interprets it accordingly.</p>
+<h2>Example:</h2>
+<p>If you want to put quotes within quotes you must use the escape sequence, \", on the interior quotes:</p>
+<pre class="prettyprint tryit">
+public class Test {
+
+   public static void main(String args[]) {
+      System.out.println("She said \"Hello!\" to me.");
+   }
+}
+</pre>
+<p>This would produce the following result:</p>
+<pre class="prettyprint">
+She said "Hello!" to me.
+</pre>
+<h2>Character Methods:</h2>
+<p>Here is the list of the important instance methods that all the subclasses of the Character class implement:</p>
+<table class="src">
+<tr>
+<th>SN</th><th>Methods with Description</th></tr>
+<tr><td>1</td><td><a href="character_isletter.php">isLetter()</a><br />Determines whether the specified char value is a letter.</td></tr>
+<tr><td>2</td><td><a href="character_isdigit.php">isDigit()</a><br />Determines whether the specified char value is a digit.</td></tr>
+<tr><td>3</td><td><a href="character_iswhitespace.php">isWhitespace()</a><br />Determines whether the specified char value is white space.</td></tr>
+<tr><td>4</td><td><a href="character_isuppercase.php">isUpperCase()</a><br />Determines whether the specified char value is uppercase.</td></tr>
+<tr><td>5</td><td><a href="character_islowercase.php">isLowerCase()</a><br />Determines whether the specified char value is lowercase.</td></tr>
+<tr><td>6</td><td><a href="character_touppercase.php">toUpperCase()</a><br />Returns the uppercase form of the specified char value.</td></tr>
+<tr><td>7</td><td><a href="character_tolowercase.php">toLowerCase()</a><br />Returns the lowercase form of the specified char value.</td></tr>
+<tr><td>8</td><td><a href="character_tostring.php">toString()</a><br />Returns a String object representing the specified character valuethat is, a one-character string.</td></tr>
+</table>
+<p>For a complete list of methods, please refer to the java.lang.Character API specification.</p>
+<h2>What is Next?</h2>
+<p>In the next section, we will be going through the String class in Java. You will be learning how to declare and use Strings efficiently as well as some of the important methods in the String class.</p>
+<br />
+<hr />
+<div class="pre-btn">
+<a href="java_numbers.php">Previous Page</a>
+</div>
+
+<div class="nxt-btn">
+<a href="java_strings.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+</div>
+
+</div>
+</div></td>
+        </tr>
+    </table>
+
+    </div>
+        </div>
+    </div>
+    </div>
+</div>
+    
+<?php include("../footer.php");?>

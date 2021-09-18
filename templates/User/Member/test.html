@@ -1,0 +1,95 @@
+{% extends 'user/member/Layout.html' %}
+{% block body %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Data Tables</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Tables</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Data Tables</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+				<form name="form" id="myform" method="post"  action="/member_test">
+					
+                	{% for ques in questions %}      
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="exampleInputEmail1">Question&nbsp;&nbsp; {{ loop.index }}</label>
+                                        <textarea class="form-control" readonly="">{{ques.question}}</textarea>
+                                        <div id="q" class="error"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">A</label>
+                                        <input type="radio" id="op1" name="{{ques.sno}}" value="a"/>&nbsp;&nbsp;{{ques.option1}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">B</label>
+                                        <input type="radio" id="op1" name="{{ques.sno}}" value="b"/>&nbsp;&nbsp;{{ques.option2}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">C</label>
+                                        <input type="radio" id="op1" name="{{ques.sno}}" value="c"/>&nbsp;&nbsp;{{ques.option3}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="exampleInputEmail1">D</label>
+                                        <input type="radio" id="op1" name="{{ques.sno}}" value="d"/>&nbsp;&nbsp;{{ques.option4}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <input type="radio" checked='checked' style='display:none' value="nil" id='radio1_{{ques.sno}}' name='{{ques.sno}}'/>
+
+                    {%endfor%} 
+                    
+                    <button type="submit" id="109" name="109" class="btn btn-w-m btn-success">Submit</button>
+                    
+                    <a href="question.php?cc=<?php echo $cc;?>&cmd=0"><button type="button" class="btn btn-w-m btn-info">Cancel</button></a> 
+                </form> 
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="{{ url_for('static',filename='User_Includes/js/dist/autosize.js')}}"></script>
+
+<script>
+        autosize(document.querySelectorAll('textarea'));
+</script>
+{% endblock %}

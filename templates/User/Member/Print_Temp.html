@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link href="{{ url_for('static',filename='User_Includes/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/js/plugins/gritter/jquery.gritter.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/css/animate.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/css/style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='User_Includes/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
+    <style type="text/css">
+        .circle
+            {
+            border-radius:50% 50% 50% 50%;  
+
+            }
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title" style="background-color: #2F4050">
+                <img src="{{ url_for('static',filename='images/logo.png')}}" alt="" />&nbsp;&nbsp;&nbsp;&nbsp;
+                
+
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        {% set img = 'profile/'+li[5] %}
+                <img alt="image" class="rounded-circle" src="{{ url_for('static',filename=img)}}" width="50px" height="50px"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="color: white;font-size: 18px">{{li[2]}}&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;{{li[0]}}&nbsp;&nbsp;)</span>
+                       &nbsp;&nbsp;&nbsp;&nbsp; Welcome to eLearning – Learning Development And Skill Test
+                    </a>
+                </div>
+            </div>    
+            <div class="ibox-content">
+                            
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Course Code</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[14]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Exam Date</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[15]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Total Question</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="10" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Result</label>
+                                <input type="text"  class="form-control"  value="{{li[13]}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Correct Answer</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[7]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Wrong Answer</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[8]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Unanswered</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[9]}}" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Total Marks</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[10]}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Percentage</label>
+                                <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[11]}}" readonly >
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Grade</label>
+                                <input type="text"  class="form-control" id="cname" name="cname" value="{{li[12]}}" readonly>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>            
+</body>
+</html>

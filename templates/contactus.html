@@ -1,0 +1,124 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="all-title-box1">
+		<div class="container text-center">
+			
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Need Help? Sure we are Online!</h3>
+                <p class="lead">For partnership and business development inquiries, please contact us at eLearning@gmail.com.</p>
+                <p class="lead">Check out our Help and Support center to find quick answers to your questions.</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form">
+                        <div id="message" align="center" class="msg">
+                        	{% if li[1] %}
+			                    {{ li[1] }}
+			                {% endif %}
+                        </div>
+                        <form action="" name="form" method="post" onsubmit="return validate();">
+                            <div class="row row-fluid">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="First Name">
+                                    <div id="n" class="error"></div>
+                                </div>
+                                
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                                    <div id="e" class="error"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input type="text" name="cno" id="cno" class="form-control" placeholder="Your Phone">
+                                    <div id="c" class="error"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea class="form-control" name="fb" id="fb" rows="6" placeholder="Give us more details.."></textarea>
+                                    <div id="f" class="error"></div>
+                                </div>
+                                <div class="text-center pd">
+                                    <button type="submit" value="SEND" name="Submit" id="Submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+				<div class="col-xl-6 col-md-12 col-sm-12">
+					<div class="map-box">
+						<img src="{{ url_for('static',filename='images/contact01.jpg')}}" height="500px" width="100%" />
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+	
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCKjLTXdq6Db3Xit_pW_GK4EXuPRtnod4o"></script>
+	<!-- Mapsed JavaScript -->
+	
+
+
+<script>
+	var chk_name=/^[A-Za-z. ]{2,40}$/;
+	var chk_cno=/^[0-9\-]{7,12}$/;
+	var chk_msg=/^[A-Za-z0-9?,&\n%()=!.\- ]{10,500}$/;
+	var chk_email=/^([a-zA-Z0-9.])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	function validate()
+	{
+		var name=form.name.value;
+		var cno=form.cno.value;	
+		var email=form.email.value;		
+		var fb=form.fb.value;	
+		
+		var flag=1;
+		if(!chk_name.test(name))
+		{
+			document.getElementById('n').innerHTML = "You Must Enter a Valid Name";
+  			if(flag==1)
+				form.name.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('n').innerHTML = "";	
+		if(!chk_email.test(email))
+		{
+			document.getElementById('e').innerHTML = "You Must Enter a Valid Email-Id";
+  			if(flag==1)
+				form.email.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('e').innerHTML = "";
+		if(!chk_cno.test(cno))
+		{
+			document.getElementById('c').innerHTML = "You Must Enter a Valid Contact No";
+  			if(flag==1)
+				form.cno.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('c').innerHTML = "";
+		if(!chk_msg.test(fb))
+		{
+			document.getElementById('f').innerHTML = "You Must Enter a Feedback of min 10 characters";
+  			if(flag==1)
+				form.fb.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('f').innerHTML = "";
+		if(flag==1)
+			return true;
+		else
+			return false;
+	}
+
+</script>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'user/admin/Layout.html' %}
+{% block body %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Active&nbsp;Member</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Application.php">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Member</a>
+            </li>
+            
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        
+            
+        <div class="ibox-content">
+            <form name="form" method="post" onsubmit="return validate();" action="/admin_index/{{li[7]}}"  enctype="multipart/form-data" class="d-inline">
+            	<h3 style="color: red">
+					{% if li[8] %}
+					{{li[8]}}
+					{% endif %}
+				</h3>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Applicant Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{data.name}}" {% if li[7] == '0'  %}readonly {%endif%}>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Father's Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" value="{{data.father_name}}" {% if li[7] == '0'  %}readonly {%endif%}>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">{% if li[7] == '1'  %} <div style="color: red;" >Contact Number (Editable)</div>{%else%}
+                                        Contact Number
+                                    {%endif%}</label>
+                                <input type="text" class="form-control" id="cno" name="cno" value="{{data.contact_no}}" {% if li[7] == '0'  %}readonly {%endif%}>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="text" class="form-control" id="email" name="email" value="{{data.email_id}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                        	{% if li[7] == '0'  %}
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Gender</label>
+                                <input type="text" class="form-control" value="{% if data.gender=='M'%}Male{%else%}Female{%endif%}" id="gen" name="gen" readonly >
+                            </div>
+                            {%else%}
+                            
+                            <div class="col-md-6 ">
+                        	
+			                  <input   id="gen" name="gen" type="radio" value="M" {% if data.gender=="M" %} checked{% endif %}>&nbsp;&nbsp;&nbsp;Male &nbsp;&nbsp;
+			                  <input id="gen" name="gen" type="radio" value="F" {% if data.gender=="F" %} checked{% endif %}>&nbsp;&nbsp;&nbsp;Female
+			                </div>
+		                	<span class="error" id="gen_e"></span>
+			              	
+
+                            {%endif%}
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Date of Birth</label>
+                                <input type="text" class="form-control" value="{{data.dob}}" id="dob" name="dob">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Date of Admission</label>
+                                <input type="text" class="form-control" value="{{data.doa}}" readonly >
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="exampleInputEmail1">Course Duration</label>
+                                <input type="text" class="form-control" value="{{data.duration}}" id="ddno" name="ddno" readonly >
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="exampleInputEmail1">
+                                    {% if li[7] == '1'  %} <div style="color: red;" >Applicant Address (Editable)</div>{%else%}
+                                        Applicant Address
+                                    {%endif%}
+                                    </label>
+                                <textarea class="form-control" name="add" id="add" rows="4" {% if li[7] == '0'  %}readonly {%endif%}>{{data.address}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% if li[7] == '1'  %}
+                                <label for="">Select File</label>
+                                <input type="file" name="img" id="img"  class="form-control"  onchange="preview_image(event)">
+                            	{%else%}
+                                Image of Student {%endif%}
+                            </div>
+                            <div class="col-md-6">
+                                {% set img = 'profile/'+li[5] %}
+                                <img class="app-sidebar__user-avatar" src="{{ url_for('static',filename=img)}}" width="150px" height="150px" id="output_image">
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+                {% if li[7] == '1'  %}
+                <button type="submit" id="edit" name="edit" class="btn btn-primary"><i class="fa fa-check"></i>Update</button>
+                <a href="/admin_index/{{0}}"><button type="button" class="btn btn-w-m btn-info">Cancel</button></a>
+                {%endif%}
+                
+            
+            </form>
+        </div>
+        
+    </div>
+    </div>
+</div>
+    
+<?php include("footer.php");?>
+
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+{% endblock %}

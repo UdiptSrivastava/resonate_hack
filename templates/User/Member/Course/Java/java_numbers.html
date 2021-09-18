@@ -1,0 +1,105 @@
+
+<?php include("header.php");?>
+<?php include("sub_head.php");?>
+<!-- PRINTING STARTS HERE -->
+<div class="content">
+<h1>Java - Numbers Class</h1>
+
+<hr />
+<div class="pre-btn">
+<a href="java_decision_making.php">Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="java_characters.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>Normally, when we work with Numbers, we use primitive data  types  such as  byte, int, long, double, etc.</p>
+<h2>Example:</h2>
+<pre class="prettyprint">
+int i = 5000;
+float gpa = 13.65;
+byte mask = 0xaf;
+</pre>
+<p>However, in development, we come across situations where we need to use objects instead of primitive data types. In-order to achieve this Java provides wrapper classes for each primitive data type.</p>
+<p>All the wrapper classes (Integer, Long, Byte, Double, Float, Short) are subclasses of the abstract class Number.<p>
+<center>
+<img src="/images/number_classes.jpg" alt="Number Subclasses" />
+</center>
+<p>This wrapping is taken care of by the compiler, the process is called boxing. So when a primitive is used when an object is required, the compiler boxes the primitive type in its wrapper class. Similarly, the compiler unboxes the object to a primitive as well. The <b>Number</b> is part of the java.lang package.</p>
+<p>Here is an example of boxing and unboxing:</p>
+<pre class="prettyprint tryit">
+public class Test{
+
+   public static void main(String args[]){
+      Integer x = 5; // boxes int to an Integer object
+      x =  x + 10;   // unboxes the Integer to a int
+      System.out.println(x); 
+   }
+}
+</pre>
+<p>This would produce the following result:</p>
+<pre class="result">
+15
+</pre>
+<p>When x is assigned integer values, the compiler boxes the integer because x is integer objects. Later, x is unboxed so that they can be added as integers.</p>
+<h2>Number Methods:</h2>
+<p>Here is the list of the instance methods that all the subclasses of the Number class implement:</p>
+<table class="src">
+<tr>
+<th>SN</th><th>Methods with Description</th></tr>
+<tr><td>1</td><td><a href="number_xxxvalue.php">xxxValue()</a><br />Converts the value of <i>this</i> Number object to the xxx data type and returned it.</td></tr>
+<tr><td>2</td><td><a href="number_compareto.php">compareTo()</a><br />Compares <i>this</i> Number object to the argument.</td></tr>
+<tr><td>3</td><td><a href="number_equals.php">equals()</a><br />Determines whether <i>this</i> number object is equal to the argument.</td></tr>
+<tr><td>4</td><td><a href="number_valueof.php">valueOf()</a><br />Returns an Integer object holding the value of the specified primitive.</td></tr>
+<tr><td>5</td><td><a href="number_tostring.php">toString()</a><br />Returns a String object representing the value of specified int or Integer.</td></tr>
+<tr><td>6</td><td><a href="number_parseint.php">parseInt()</a><br />This method is used to get the primitive data type of a certain String.</td></tr>
+<tr><td>7</td><td><a href="number_abs.php">abs()</a><br />Returns the absolute value of the argument.</td></tr>
+<tr><td>8</td><td><a href="number_ceil.php">ceil()</a><br />Returns the smallest integer that is greater than or equal to the argument. Returned as a double.</td></tr>
+<tr><td>9</td><td><a href="number_floor.php">floor()</a><br />Returns the largest integer that is less than or equal to the argument. Returned as a double.</td></tr>
+<tr><td>10</td><td><a href="number_rint.php">rint()</a><br />Returns the integer that is closest in value to the argument. Returned as a double.</td></tr>
+<tr><td>11</td><td><a href="number_round.php">round()</a><br />Returns the closest long or int, as indicated by the method's return type, to the argument.</td></tr>
+<tr><td>12</td><td><a href="number_min.php">min()</a><br />Returns the smaller of the two arguments.</td></tr>
+<tr><td>13</td><td><a href="number_max.php">max()</a><br />Returns the larger of the two arguments.</td></tr>
+<tr><td>14</td><td><a href="number_exp.php">exp()</a><br />Returns the base of the natural logarithms, e, to the power of the argument.</td></tr>
+<tr><td>15</td><td><a href="number_log.php">log()</a><br />Returns the natural logarithm of the argument.</td></tr>
+<tr><td>16</td><td><a href="number_pow.php">pow()</a><br />Returns the value of the first argument raised to the power of the second argument.</td></tr>
+<tr><td>17</td><td><a href="number_sqrt.php">sqrt()</a><br />Returns the square root of the argument.</td></tr>
+<tr><td>18</td><td><a href="number_sin.php">sin()</a><br />Returns the sine of the specified double value.</td></tr>
+<tr><td>19</td><td><a href="number_cos.php">cos()</a><br />Returns the cosine of the specified double value.</td></tr>
+<tr><td>20</td><td><a href="number_tan.php">tan()</a><br />Returns the tangent of the specified double value.</td></tr>
+<tr><td>21</td><td><a href="number_asin.php">asin()</a><br />Returns the arcsine of the specified double value.</td></tr>
+<tr><td>22</td><td><a href="number_acos.php">acos()</a><br />Returns the arccosine of the specified double value.</td></tr>
+<tr><td>23</td><td><a href="number_atan.php">atan()</a><br />Returns the arctangent of the specified double value.</td></tr>
+<tr><td>24</td><td><a href="number_atan2.php">atan2()</a><br />Converts rectangular coordinates (x, y) to polar coordinate (r, theta) and returns theta.</td></tr>
+<tr><td>25</td><td><a href="number_todegrees.php">toDegrees()</a><br />Converts the argument to degrees</td></tr>
+<tr><td>26</td><td><a href="number_toradians.php">toRadians()</a><br />Converts the argument to radians.</td></tr>
+<tr><td>27</td><td><a href="number_random.php">random()</a><br />Returns a random number.</td></tr>
+</table>
+<h2>What is Next?</h2>
+<p>In the next section, we will be going through the Character class in Java. You will be learning how to use object Characters and primitive data type char in Java.</p>
+<br />
+<hr />
+<div class="pre-btn">
+<a href="java_decision_making.php">Previous Page</a>
+</div>
+
+<div class="nxt-btn">
+<a href="java_characters.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+</div>
+
+</div>
+</div></td>
+        </tr>
+    </table>
+
+    </div>
+        </div>
+    </div>
+    </div>
+</div>
+    
+<?php include("../footer.php");?>

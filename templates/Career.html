@@ -1,0 +1,144 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="all-title-box5">
+		<div class="container text-center">
+			
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Become an instructor</h3>
+                <p class="lead">Top instructors from around the world teach millions of students in our institute. We provide the tools and skills to teach what you love.</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form">
+                        <div id="message" align="center" class="msg">
+                        	{% if li[6] %}
+			                    {{ li[6] }}
+			                {% endif %}
+                        </div>
+                        <form  name="form" method="post" onsubmit="return validate();" enctype="multipart/form-data">
+                            <div class="row row-fluid">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Your Name" value="{{li[1]}}">
+                                    <div id="n" class="error"></div>
+                                </div>
+                                
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email"  value="{{li[2]}}">
+                                    <div id="e" class="error"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input type="text" name="cno" id="cno" class="form-control" placeholder="Your Contact Number"  value="{{li[3]}}">
+                                    <div id="c" class="error"></div>
+                                </div>
+                                <div valign="middle" style="color: White;font-size: 20px;">
+                                	Gender
+                                    <input type="radio" name="gen" id="gen"  value="M" {% if li[4]=="M" %} checked{% endif %}/> Male
+                                    <input type="radio" name="gen" id="gen"  value="F" {% if li[4]=="F" %} checked{% endif %}/> Female
+                                    <div id="g" class="error"></div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                	<input type="file" name="cv" id="cv" class="form-control" placeholder="Select a File" />
+                                	<div id="cvv" class="error"></div>
+				                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea class="form-control" name="add" id="add" rows="6" placeholder="Type Your Address..">{{li[5]}}</textarea>
+                                    <div id="ad" class="error"></div>
+                                </div>
+                                <div class="text-center pd">
+                                    <button type="submit" value="SEND" name="Submit" id="Submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+				<div class="col-xl-6 col-md-12 col-sm-12">
+					<div class="map-box">
+						<img src="{{ url_for('static',filename='images/career.jpg')}}" height="567px" width="100%" id="custom-places"/>
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+<script>
+	var chk_name=/^[A-Za-z. ]{2,40}$/;
+	var chk_cno=/^[0-9\-]{7,12}$/;
+	var chk_msg=/^[A-Za-z0-9?,&\n%()=!.\- ]{10,500}$/;
+	var chk_email=/^([a-zA-Z0-9.])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	function validate()
+	{
+		var name=form.name.value;
+		var cno=form.cno.value;	
+		var email=form.email.value;		
+		var add=form.add.value;	
+		var gen=form.gen.value;	
+		var cv=form.cv.value;
+		var flag=1;
+		if(!chk_name.test(name))
+		{
+			document.getElementById('n').innerHTML = "You Must Enter a Valid Name";
+  			if(flag==1)
+				form.name.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('n').innerHTML = "";	
+		if(!chk_email.test(email))
+		{
+			document.getElementById('e').innerHTML = "You Must Enter a Valid Email-Id";
+  			if(flag==1)
+				form.email.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('e').innerHTML = "";
+		if(!chk_cno.test(cno))
+		{
+			document.getElementById('c').innerHTML = "You Must Enter a Valid Contact No";
+  			if(flag==1)
+				form.cno.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('c').innerHTML = "";
+			
+		if(gen=="")
+		{
+			document.getElementById('g').innerHTML = "You Must Select a Gender";
+ 			flag=0;
+		}
+		else
+  			document.getElementById('g').innerHTML = "";
+  		if(cv=="")
+		{
+			document.getElementById('cvv').innerHTML = "You Must select a CV File";
+  			if(flag==1)
+				form.resume.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('cvv').innerHTML = "";
+		if(!chk_msg.test(add))
+		{
+			document.getElementById('ad').innerHTML = "You Must Enter a Query of min 10 characters";
+  			if(flag==1)
+				form.add.focus();
+  			flag=0;
+		}
+		else
+  			document.getElementById('ad').innerHTML = "";
+		
+		if(flag==1)
+			return true;
+		else
+			return false;
+	}
+
+</script>
+{% endblock %}

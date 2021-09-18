@@ -1,0 +1,228 @@
+{% extends 'user/admin/Layout.html' %}
+{% block body %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo $title;?></h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Application.php">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Questions</a>
+            </li>
+            
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h3 class="error"><?php echo $msg;?></h3>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    
+                    
+                    
+                </div>
+            </div>
+            {% if li[16] != 0 %}
+            <div class="ibox-content">
+                <form name="form" method="post" onsubmit="return validate();" >
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Question</label>
+                                    <textarea class="form-control" name="ques" id="ques" rows="4"  {% if li[16]>2 %} readonly {% endif %} >{{li[9]}}</textarea>
+                                    <div id="q" class="error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Option 1</label>
+                                    <input class="form-control" name="op1" id="op1" type="text" aria-describedby="emailHelp" placeholder="Enter Option 1" value="{{li[10]}}" {% if li[16]>2 %} readonly {% endif %}><small class="error" id="e_op1"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Option 2</label>
+                                    <input class="form-control" name="op2" id="op2" type="text" aria-describedby="emailHelp" placeholder="Enter Option 2" value="{{li[11]}}" {% if li[16]>2 %} readonly {% endif %}><small class="error" id="e_op2"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Option 3</label>
+                                    <input class="form-control" name="op3" id="op3" type="text" aria-describedby="emailHelp" placeholder="Enter Option 3" value="{{li[12]}}" {% if li[16]>2 %} readonly {% endif %} ><small class="error" id="e_op3"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Option 4</label>
+                                    <input class="form-control" name="op4" id="op4" type="text" aria-describedby="emailHelp" placeholder="Enter Option 4" value="{{li[13]}}" {% if li[16]>2 %} readonly {% endif %} ><small class="error" id="e_op4"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Answer</label>
+                                    <input class="form-control" name="ans" id="ans" type="text" aria-describedby="emailHelp" placeholder="Enter Answer" value="{{li[14]}}" {% if li[16]>2 %} readonly {% endif %}><small class="error" id="e_ans"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if li[16]==1 %}
+                    <button type="submit" id="Save_Course" name="Save_Course" class="btn btn-w-m btn-success">Save</button>
+                    {% elif li[16]==2 %}
+                    <button type="submit" id="Update_Course" name="Update_Course" class="btn btn-w-m btn-success">Update</button>
+                    {% elif li[16]==3 %}
+                    <button type="submit" id="Delete_Course" name="Delete_Course" class="btn btn-w-m btn-danger">Delete</button>
+                    {%endif%}
+                    <a href="/admin_question/{{0}},{{0}}"><button type="button" class="btn btn-w-m btn-info">Cancel</button></a>
+                    
+                
+                </form>
+            </div>
+        	{%else%}
+            <div class="ibox-content">
+            	<div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        
+                        <th>Course Code</th>
+                        <th>Question</th>
+                        <th><a href="/admin_question/{{0}},{{1}}" style="text-decoration: none;"> <button class="btn btn-success">Add Question</button></a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for rec in data %}    
+                    <tr class="gradeX">
+                        
+                        <td>{{rec.course_code}}</td>
+                        <td>{{rec.question[0:80]}}</td>
+                        
+                        <td class="center">
+                                <a href="/admin_question/{{rec.sno}},{{2}}" style="text-decoration: none;"> <button class="btn btn-primary">Modify</button></a>
+                                <a href="/admin_question/{{rec.sno}},{{3}}" style="text-decoration: none;"> <button class="btn btn-danger">Delete</button></a>
+                                <a href="/admin_question/{{rec.sno}},{{4}}" style="text-decoration: none;"> <button class="btn btn-info">Show</button></a>
+                         </td>
+                    </tr>
+                    {%endfor%}
+                    
+                    </tbody>
+                    <tfoot>
+                    
+                    </tfoot>
+                    </table>
+                </div>
+            </div>
+			{%endif%}
+        </div>
+    	
+    </div>
+    </div>
+</div>
+<script src="{{ url_for('static',filename='User_Includes/js/dist/autosize.js')}}"></script>
+
+<script>
+        autosize(document.querySelectorAll('textarea'));
+</script>
+<script>
+    function validate()
+    {
+        var cat=form.cat.value;
+        var ques=form.ques.value;
+        var op1=form.op1.value;
+        var op2=form.op2.value;
+        var op3=form.op3.value;
+        var op4=form.op4.value;
+        var ans=form.ans.value;
+
+        if(cat=="Select Category")
+        {
+            document.getElementById('e_cat').innerHTML = "You Must Select a Valid Category";
+            form.cat.focus();
+            return(false);
+        }
+        else
+            document.getElementById('e_cat').innerHTML = "";
+        if(ques=="")
+    {
+      document.getElementById('e_ques').innerHTML = "You Must Enter a Question";
+      form.ques.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_ques').innerHTML = "";
+    if(op1=="")
+    {
+      document.getElementById('e_op1').innerHTML = "You Must Enter Option 1";
+      form.op1.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_op1').innerHTML = "";
+    if(op2=="")
+    {
+      document.getElementById('e_op2').innerHTML = "You Must Enter Option 2";
+      form.op2.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_op2').innerHTML = "";
+    if(op3=="")
+    {
+      document.getElementById('e_op3').innerHTML = "You Must Enter Option 3";
+      form.op3.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_op3').innerHTML = "";
+    if(op4=="")
+    {
+      document.getElementById('e_op4').innerHTML = "You Must Enter Option 4";
+      form.op4.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_op4').innerHTML = "";
+    if(ans=="")
+    {
+      document.getElementById('e_ans').innerHTML = "You Must Enter Answer";
+      form.op4.focus();
+      return(false);
+    }
+    else
+      document.getElementById('e_ans').innerHTML = "";
+        return true;
+    }
+</script>
+{% endblock %}

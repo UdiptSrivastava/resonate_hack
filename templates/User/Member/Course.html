@@ -1,0 +1,209 @@
+{% extends 'user/member/Layout.html' %}
+{% block body %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2><?php echo $title;?></h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="Application.php">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Courses</a>
+            </li>
+            
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h3 class="error"><?php echo $msg;?></h3>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            {% if li[8]!='0' %}
+            <div class="ibox-content">
+                <form name="form" method="post" onsubmit="return validate();" >
+                	<h3>
+						{% if li[7] %}
+						{{li[7]}}
+						{% endif %}
+					</h3>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Course Code</label>
+                                    <input type="text" class="form-control" id="ccode" name="ccode" value="{{li[9]}}" readonly >
+                                    <div id="cc" class="error"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Course Name</label>
+                                    <input type="text"  class="form-control" id="cname" name="cname" value="{{li[10]}}" readonly>
+                                    <div id="cn" class="error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Course Duration</label>
+                                    <input type="text" class="form-control" id="dur" name="dur" value="{{li[11]}}" readonly>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Course Fees</label>
+                                    <input type="text" class="form-control" id="cfee" name="cfee" value="{{li[12]}}" readonly>
+                                    <div id="cf" class="error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Course Modules</label>
+                                    <textarea class="form-control" name="modules" id="modules" rows="4" readonly>{{li[13]}}</textarea>
+                                    <div id="cm" class="error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="exampleInputEmail1">Course Career</label>
+                                    <textarea class="form-control" name="car" id="car" rows="4"  readonly>{{li[14]}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    
+                    <a href="/member_course/{{0}}"><button type="button" class="btn btn-w-m btn-info">Back</button></a>
+                
+                </form>
+            </div>
+            {% else %}
+            <div class="ibox-content">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Fees</th>
+                        <th>Duration</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for course in course %}
+                    <tr class="gradeX">
+                        <td>{{course.course_code}}</td>
+                        <td>{{course.course_name}}</td>
+                        <td>{{course.fees}}</td>
+                        <td>{{course.duration}}</td>
+                        <td class="center">
+                                <a href="/member_course/{{course.course_code}}" style="text-decoration: none;"> <button class="btn btn-info">Show</button></a>
+                                <a href="/member_study/{{course.course_code}}" style="text-decoration: none;"> <button class="btn btn-info">Study Material</button></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
+    </div>
+    </div>
+</div>
+    
+
+<script>
+    var chk_cc=/^[a-zA-Z0-9 \-]{1,10}$/;
+    var chk_cn=/^[a-zA-Z .0-9#++]{1,50}$/;
+    var chk_fees=/^[0-9]{3,7}$/;
+    var chk_mod=/^[a-zA-Z0-9\-+.,# ]{1,100}$/;
+    
+    function validate()
+    {
+        var ccode=form.ccode.value;
+        var cname=form.cname.value;
+        var cfee=form.cfee.value;
+        var duration=form.duration.value;
+        var modules=form.modules.value;
+        var car=form.car.value;
+        var flag=1;
+        if(!chk_cc.test(ccode))
+        {
+            document.getElementById('cc').innerHTML = "You Must Enter a Valid Course Code";
+            if(flag==1)
+                form.ccode.focus();
+            flag=0;
+        }
+        else
+            document.getElementById('cc').innerHTML = "";
+        if(!chk_cn.test(cname))
+        {
+            document.getElementById('cn').innerHTML = "You Must Enter a Valid Course Name";
+            if(flag==1)
+                form.cname.focus();
+            flag=0;
+        }
+        else
+            document.getElementById('cn').innerHTML = "";
+        if(duration=="Select Duration")
+        {
+            document.getElementById('cd').innerHTML = "You Must Select a Duration";
+            if(flag==1)
+                form.duration.focus();
+            flag=0;
+        }
+        else
+            document.getElementById('cd').innerHTML = "";
+        if(!chk_fees.test(cfee))
+        {
+            document.getElementById('cf').innerHTML = "You Must Enter a Valid Course Fee";
+            if(flag==1)
+                form.cfee.focus();
+            flag=0;
+        }
+        else
+            document.getElementById('cf').innerHTML = "";
+        if(!chk_mod.test(modules))
+        {
+            document.getElementById('cm').innerHTML = "You Must Enter a Valid Course Modules";
+            if(flag==1)
+                form.modules.focus();
+            flag=0;
+        }
+        else
+            document.getElementById('cm').innerHTML = "";
+        if(flag==1)
+            return true;
+        else
+            return false;
+        
+    }
+
+</script>
+{% endblock %}

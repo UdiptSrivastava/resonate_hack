@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>eLearning : Smart-Education</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico')}}" type="image/x-icon" />
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <!-- Site CSS 
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/ prettyPhoto.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/timeline.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-touch-slider.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/flaticon.css')}}">
+    -->
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/versions.css')}}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css')}}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/custom.css')}}">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="{{ url_for('static',filename='js/modernizer.js')}}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version"> 
+
+  <div class="modal fade" id="loginModal" >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header tit-up">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Member Login </h4>
+      </div>
+      <div class="modal-body customer-box">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+          <li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
+          <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane {% if pid=='8' or pid=='0' %}active{% endif %}" id="Login">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <span style="color: red;font-size: 18px">
+                  {% if li[11] %}
+                      {{ li[11] }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <form role="form" class="form-horizontal" action="/register" method="post">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input class="form-control" id="userid" name="userid" placeholder="Enter User Id" type="text" required="" value="{{li[12]}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-10">
+                  <input type="submit" class="btn btn-light btn-radius btn-brd grd1" name="btnLogin" id="btnLogin" value="Login" >
+                  <a class="for-pwd" href="javascript:;">Forgot your password?</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane {% if pid=='7' %}active{% endif %}" id="Registration">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <span class="error">
+                  {% if li[11] %}
+                    {{ li[11] }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <form role="form" class="form-horizontal" method="post" name="RegForm" onsubmit="return validate();" action="/register">
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Name" type="text" id="name" name="name" value="{{li[1]}}">
+                  <span id="sname" class="Error"></span>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Father's Name" type="text" id="fname" name="fname" value="{{li[2]}}">
+                  <span class="error" id="sfname"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Email-Id" type="email" id="email" name="email" value="{{li[3]}}">
+                  <span class="error" id="em"></span>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Contact Number" type="text" id="contact" name="contact" value="{{li[4]}}">
+                  <span class="error" id="contact_e"></span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <textarea placeholder="Your Address" class="form-control" name="address" id="address" rows="4">{{li[6]}}</textarea>
+                  <span class="error" id="contact_add"></span>
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Date of Birth" type="date" id="dob" name="dob" value="{{li[7]}}">
+                  <span class="error" id="ddno_e"></span>
+                </div>
+                <div class="col-sm-6">
+                  <select class="form-control m-b" name="ccode" id="ccode" onchange="get_fee();">
+                    <option>{{li[8]}}</option>
+                    {% for course in course %}
+                      <option>{{course.course_code}}</option>
+                    {% endfor %}                    
+                  </select>
+                  <span class="error" id="cc"></span>
+                </div>
+                
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="Bank Name" type="text" id="bname" name="bname" value="{{li[9]}}">
+                  <span class="error" id="bname_e"></span>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" placeholder="DD Number" type="text" id="ddno" name="ddno" value="{{li[10]}}">
+                  <span class="error" id="ddno_e"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                
+
+
+                <div class="col-sm-6">
+                  <input id="gen" name="gen" type="radio" value="M" {% if li[4]=="M" %} checked{% endif %}>&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;
+                  <input id="gen" name="gen" type="radio" value="F" {% if li[4]=="F" %} checked{% endif %}>&nbsp;&nbsp;Female
+                </div>
+                <span class="error" id="gen_e"></span>
+              </div>
+              <!--
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input class="form-control" id="mobile" placeholder="Mobile" type="email">
+                </div>
+              </div>-->
+              
+              <div class="row">             
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-light btn-radius btn-brd grd1" id="RegSubmit" name="RegSubmit">
+                    Save &amp; Continue
+                  </button>
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+     
+  
+  <!-- Start header -->
+  <header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="{{ url_for('static',filename='images/logo.png')}}" alt="" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbars-host">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item {% if li[0]=='1' %}active{% endif %}"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item {% if li[0]=='2' %}active{% endif %}" ><a class="nav-link" href="/about">About Us</a></li>
+            <li class="nav-item {% if li[0]=='3' %}active{% endif %}"><a class="nav-link" href="/contact">Contact Us</a></li>
+            <li class="nav-item {% if li[0]=='4' %}active{% endif %}"><a class="nav-link" href="/enquiry">Enquiry</a></li>
+            <li class="nav-item {% if li[0]=='5' %}active{% endif %}"><a class="nav-link" href="/courses">Courses</a></li>
+            <li class="nav-item {% if li[0]=='6' %}active{% endif %}"><a class="nav-link" href="/career">Career</a></li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="/register" data-toggle="modal" data-target="#loginModal"><span>Login/Registration</span></a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+{% block body %}
+  
+{% endblock %}
+
+<footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>About US</h3>
+                        </div>
+                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>   
+            <div class="footer-right">
+              <ul class="footer-links-soi">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-github"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+              </ul><!-- end links -->
+            </div>            
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+        <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Information Link</h3>
+                        </div>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Pricing</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+        
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Contact Details</h3>
+                        </div>
+
+                        <ul class="footer-links">
+                            <li><a href="mailto:#">info@yoursite.com</a></li>
+                            <li><a href="#">www.yoursite.com</a></li>
+                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+                            <li>+61 3 8376 6284</li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+        
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </footer><!-- end footer -->
+
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2021 SmartEDU Design By : Global Computer Institute</p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{{ url_for('static',filename='js/all.js')}}"></script>
+
+  <script>
+    $(document).ready(function(){
+      var id={{pid}}
+      if(id=='7' || id=='8')
+        $('a[data-target="#loginModal"]').trigger('click');
+    });
+  </script>
+
+    <!-- ALL PLUGINS -->
+    <script src="{{ url_for('static',filename='js/custom.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/timeline.min.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/mapsed.js')}}"></script>
+  <script src="{{ url_for('static',filename='js/01-custom-places-example.js')}}"></script>
+
+  <script>
+    timeline(document.querySelectorAll('.timeline'), {
+      forceVerticalMode: 700,
+      mode: 'horizontal',
+      verticalStartPosition: 'left',
+      visibleItems: 4
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+<?php include("header.php");?>
+<?php include("sub_head.php");?>
+<!-- PRINTING STARTS HERE -->
+<div class="content">
+<h1>Java - Encapsulation</h1>
+
+<hr />
+<div class="pre-btn">
+<a href="java_abstraction.php">Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="java_interfaces.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<p>Encapsulation is one of the four fundamental OOP concepts. The other three are inheritance, polymorphism, and abstraction.</p>
+<p>Encapsulation is the technique of making the fields in a class private and providing access to the fields via public methods. If a field is declared private, it
+cannot be accessed by anyone outside the class, thereby hiding the fields within the class. For this reason, encapsulation is also referred to as data hiding.</p>
+<p>Encapsulation can be described as a protective barrier that prevents the code and data being randomly accessed by other code defined outside the class. Access to the data and code is tightly controlled by an interface.</p>
+<p>The main benefit of encapsulation is the ability to modify our implemented code without breaking the code of others who use our code. With this feature Encapsulation gives maintainability, flexibility and extensibility to our code.</p>
+<h2>Example:</h2>
+<p>Let us look at an example that depicts encapsulation:</p>
+<pre class="prettyprint" id="encaptest">
+/* File name : EncapTest.java */
+public class EncapTest{
+
+   private String name;
+   private String idNum;
+   private int age;
+
+   public int getAge(){
+      return age;
+   }
+
+   public String getName(){
+      return name;
+   }
+
+   public String getIdNum(){
+      return idNum;
+   }
+
+   public void setAge( int newAge){
+      age = newAge;
+   }
+
+   public void setName(String newName){
+      name = newName;
+   }
+
+   public void setIdNum( String newId){
+      idNum = newId;
+   }
+}
+</pre>
+<p>The public methods are the access points to this class' fields from the outside java world. Normally, these methods are referred as getters and setters. Therefore any class that wants to access the variables should access them through these getters and setters.</p>
+<p>The variables of the EncapTest class can be access as below::</p>
+<pre class="prettyprint tryit" title="encaptest">
+/* File name : RunEncap.java */
+public class RunEncap{
+
+   public static void main(String args[]){
+      EncapTest encap = new EncapTest();
+      encap.setName("James");
+      encap.setAge(20);
+      encap.setIdNum("12343ms");
+
+      System.out.print("Name : " + encap.getName()+ 
+                             " Age : "+ encap.getAge());
+    }
+}
+</pre>
+<p>This would produce the following result:</p>
+<pre class="prettyprint">
+Name : James Age : 20
+</pre>
+<h2>Benefits of Encapsulation:</h2>
+<ul class="list">
+<li><p>The fields of a class can be made read-only or write-only.</p></li>
+<li><p>A class can have total control over what is stored in its fields.</p></li>
+<li><p>The users of a class do not know how the class stores its data. A class can change the data type of a field and users of the class do not need to change any of their code.</p></li>
+</ul>
+<br />
+<hr />
+<div class="pre-btn">
+<a href="java_abstraction.php">Previous Page</a>
+</div>
+
+<div class="nxt-btn">
+<a href="java_interfaces.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+</div>
+
+</div>
+</div></td>
+        </tr>
+    </table>
+
+    </div>
+        </div>
+    </div>
+    </div>
+</div>
+    
+<?php include("../footer.php");?>

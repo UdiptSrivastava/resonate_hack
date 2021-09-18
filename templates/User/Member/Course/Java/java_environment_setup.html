@@ -1,0 +1,83 @@
+
+<?php include("header.php");?>
+<?php include("sub_head.php");?>
+<!-- PRINTING STARTS HERE -->
+<div class="content">
+<h1>Java Environment Setup</h1>
+
+<hr />
+<div class="pre-btn">
+<a href="java_overview.php">Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="java_basic_syntax.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+<blockquote>
+<h2>Try it Option Online</h2>
+<p>You really do not need to set up your own environment to start learning Java programming language. Reason is very simple, we already have setup Java Programming environment online, so that you can compile and execute all the available examples online at the same time when you are doing your theory work. This gives you confidence in what you are reading and to check the result with different options. Feel free to modify any example and execute it online.</p>
+<p>Try following example using <b>Try it</b> option available at the top right corner of the below sample code box:</p>
+<pre class="prettyprint tryit">
+public class MyFirstJavaProgram {
+
+    public static void main(String []args) {
+       System.out.println("Hello World");
+    }
+} 
+</pre>
+<p>For most of the examples given in this tutorial, you will find <b>Try it</b> option, so just make use of it and enjoy your learning.</p>
+</blockquote>
+<h2>Local Environment Setup</h2>
+<p>If you are still willing to set up your environment for Java programming language, then this section guides you on how to download and set up Java on your machine. Please follow the following steps to set up the environment.</p>
+<p>Java SE is freely available from the link <a href="http://java.sun.com/javase/downloads/index_jdk5.jsp" target="_blank">Download Java</a>. So you download a version based on your operating system.</p>
+<p>Follow the instructions to download java and run the <b>.exe</b> to install Java on your machine. Once you installed Java on your machine, you would need to set environment variables to point to correct installation directories:</p>
+<h2>Setting up the path for windows 2000/XP:</h2>
+<p>Assuming you have installed Java in <i>c:\Program Files\java\jdk</i> directory:</p>
+<ul class="list">
+<li><p>Right-click on 'My Computer' and select 'Properties'. </p></li>
+<li><p>Click on the 'Environment variables' button under the 'Advanced' tab.</p></li>
+<li><p>Now, alter the 'Path' variable so that it also contains the path to the Java executable. Example, if the path is currently set to 'C:\WINDOWS\SYSTEM32', then change your path to read 'C:\WINDOWS\SYSTEM32;c:\Program Files\java\jdk\bin'.</p></li>
+</ul>
+<h2>Setting up the path for windows 95/98/ME:</h2>
+<p>Assuming you have installed Java in <i>c:\Program Files\java\jdk</i> directory:</p>
+<ul class="list">
+<li><p>Edit the 'C:\autoexec.bat' file and add the following line at the end: <br />'SET PATH=%PATH%;C:\Program Files\java\jdk\bin'</p></li>
+</ul>
+<h2>Setting up the path for Linux, UNIX, Solaris, FreeBSD:</h2>
+<p>Environment variable PATH should be set to point to where the Java binaries have been installed. Refer to your shell documentation if you have trouble doing this.</p>
+<p>Example, if you use <i>bash</i> as your shell, then you would add the following line to the end of your '.bashrc: export PATH=/path/to/java:$PATH'</p>
+<h2>Popular Java Editors:</h2>
+<p>To write your Java programs, you will need a text editor. There are even more sophisticated IDEs available in the market. But for now, you can consider one of the following:</p>
+<ul class="list">
+<li><p><b>Notepad:</b> On Windows machine you can use any simple text editor like Notepad (Recommended for this tutorial), TextPad.</p></li>
+<li><p><b>Netbeans:</b>is a Java IDE that is open-source and free which can be downloaded from <a href="http://www.netbeans.org/index.phpl" target="_blank">http://www.netbeans.org/index.phpl</a>.</p></li>
+<li><p><b>Eclipse:</b> is also a Java IDE developed by the eclipse open-source community and can be downloaded from <a href="http://www.eclipse.org/" target="_blank">http://www.eclipse.org/</a>.</p></li>
+</ul>
+<h2>What is Next?</h2>
+<p>Next chapter will teach you how to write and run your first Java program and some of the important basic syntaxes in Java needed for developing applications.</p>
+<br />
+<hr />
+<div class="pre-btn">
+<a href="java_overview.php">Previous Page</a>
+</div>
+
+<div class="nxt-btn">
+<a href="java_basic_syntax.php">Next Page</a>
+</div>
+<div class="clearer"></div>
+<hr />
+</div>
+
+</div>
+</div></td>
+        </tr>
+    </table>
+
+    </div>
+        </div>
+    </div>
+    </div>
+</div>
+    
+<?php include("../footer.php");?>
